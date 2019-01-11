@@ -24,7 +24,7 @@ var vkGroupLeave = promauto.NewCounter(prometheus.CounterOpts{
 	Name: "vk_group_leave",
 })
 var vkGroupJoin = promauto.NewCounter(prometheus.CounterOpts{
-	Name: "vk_group_join"/**/,
+	Name: "vk_group_join",
 })
 
 func callbackHandler(responseWriter http.ResponseWriter, request *http.Request) {

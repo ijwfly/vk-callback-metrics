@@ -1,11 +1,17 @@
 version: '2'
 
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
 services:
   prometheus:
     restart: always
     image: quay.io/prometheus/prometheus:v2.2.1
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+
     ports:
       - "9090:9090"
 
@@ -17,3 +23,17 @@ services:
       CONFIRMATION_STR: 9033f007
     ports:
       - "80:2112"
+
+  grafana:
+    restart: always
+    image: grafana/grafana
+    user: "104"
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./grafana/config.monitoring
