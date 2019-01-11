@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   prometheus:
@@ -14,6 +14,6 @@ services:
     image: vkmetrics
     build: .
     environment:
-      CONFIRMATION_STR: 9cc78bd6
+      CONFIRMATION_STR: 9033f007
     ports:
-      - "2112:2112"
+      - "80:2112"
