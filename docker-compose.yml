@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  prometheus:
+    restart: always
+    image: quay.io/prometheus/prometheus:v2.2.1
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  vkmetrics:
+    restart: always
+    image: vkmetrics
+    build: .
+    environment:
+      CONFIRMATION_STR: 9cc78bd6
+    ports:
+      - "2112:2112"
