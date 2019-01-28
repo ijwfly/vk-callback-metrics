@@ -20,7 +20,7 @@ services:
     image: vkmetrics
     build: .
     environment:
-      CONFIRMATION_STR: 9033f007
+      CONFIRMATION_STR: fe67a7cd
     ports:
       - "80:2112"
 
