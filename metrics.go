@@ -58,7 +58,7 @@ var eventTypes = []string{
 func initializeHandlers() {
 	for _, eventType := range eventTypes {
 		counterMap[eventType] = promauto.NewCounter(prometheus.CounterOpts{
-			Name: eventType,
+			Name: "vk_" + eventType,
 		})
 	}
 }
